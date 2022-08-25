@@ -2,7 +2,7 @@
   "name": "@yvesbou/smartcontract-ui-plugin",
   "version": "0.1.0",
   "description": "A plugin using the grapesjs framework to display an interface for smart contracts",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/yvesbou/smartcontract-ui-plugin/issues"
   },
-  "homepage": "https://github.com/yvesbou/smartcontract-ui-plugin#readme"
+  "homepage": "https://github.com/yvesbou/smartcontract-ui-plugin#readme",
+  "dependencies": {
+    "grapesjs": "^0.19.5"
+  }
 }
