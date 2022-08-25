@@ -2,7 +2,7 @@
   "name": "@yvesbou/smartcontract-ui-plugin",
   "version": "0.2.0",
   "description": "A plugin using the grapesjs framework to display an interface for smart contracts",
-  "main": "src/index.js",
+  "main": "./src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
