@@ -4,3 +4,22 @@
 This project is a work in progress.
 
 To make it ES5 compatible, I followed this [tutorial](https://whitep4nth3r.com/blog/how-to-build-test-and-release-node-module-es6/).
+
+
+## Install dependencies
+
+```
+npm i
+```
+
+## To run
+
+```
+npm run start
+```
+
+## To build exportable library
+
+```
+npm run build
+```
