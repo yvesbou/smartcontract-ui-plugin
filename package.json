@@ -1,6 +1,6 @@
 {
   "name": "smartcontract-ui-plugin",
-  "version": "0.2.8",
+  "version": "0.2.3",
   "description": "A plugin using the grapesjs framework to display an interface for smart contracts",
   "main": "dist/smartcontract-ui-plugin",
   "scripts": {

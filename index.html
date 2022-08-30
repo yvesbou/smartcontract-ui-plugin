@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <title>Grapesjs Tailwind</title>
     <link href="https://unpkg.com/grapesjs/dist/css/grapes.min.css" rel="stylesheet">
+    <!-- this dependency are not for the plugins themselves, just for the wrapper -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://unpkg.com/grapesjs"></script>
     <style>
         body,
@@ -50,7 +52,7 @@
 
     <script type="text/javascript">
         const escapeName = (name) => `${name}`.trim().replace(/([^a-z0-9\w-:/]+)/gi, '-');
-
+        
         window.editor = grapesjs.init({
             height: '100%',
             container: '#gjs',
@@ -62,18 +64,22 @@
             plugins: ['smartcontract-ui-plugin'],
             pluginsOpts: {
                 'smartcontract-ui-plugin': { /* Test here your options  */ }
-            }
-        });
-
-        editor.Panels.addButton('options', {
-            id: 'update-theme',
-            className: 'fa fa-adjust',
-            command: 'open-update-theme',
-            attributes: {
-                title: 'Update Theme',
-                'data-tooltip-pos': 'bottom',
+            },
+            canvas: {
+              scripts: [
+                // add dependencies for all plugins
+                'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',
+              ],
+              // The same would be for external styles
             },
         });
+
+        editor.addComponents(`<div>
+            
+            <span title="foo">Hello world!!!</span>
+            </div>`);
+
+
     </script>
 </body>
 
