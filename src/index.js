@@ -647,9 +647,16 @@ const Plugin = (editor) => {
                     </form>
                 </div>
             `)
+            console.log(item)
             col.append( $newdiv1 );
         });
+        // window object works here
+        console.log(window)
+        // console.log(new ethers.providers.Web3Provider(window.ethereum, "any"));
+        console.log(window.ethereum)
+        // console.log()
 
+        // with or without window. doesn't matter, same error
         window.handleButtonClick = async function (e) {
             e.preventDefault();
             // const { name } = e.target.id;
@@ -658,7 +665,7 @@ const Plugin = (editor) => {
             // console.log();
             const form = $(`#${e.target.id}`).closest("form").serializeArray();
             console.log(form);
-
+            
             const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
             console.log(provider);
             let accounts = await provider.send("eth_requestAccounts", []);
@@ -692,6 +699,7 @@ const Plugin = (editor) => {
             // const payload = new FormData($(`#${e.target.dataset.name}`));
             // console.log(payload);
         }
+
         // function init () {
         //     fetch(
         //     `https://api.covalenthq.com/v1/pricing/tickers/?tickers=${props.ticker}&key=${props.covalentKey}`
@@ -712,6 +720,7 @@ const Plugin = (editor) => {
     // Append to editor
     editor.BlockManager.add('smart-contract-ui', block)
     editor.DomComponents.addType('smart-contract-ui', type);
+    console.log("also here")
 }
 
 export default Plugin;
