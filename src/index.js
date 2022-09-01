@@ -63,7 +63,10 @@
  * @param {
  * } editor 
  */
-const Plugin = (editor) => {
+const Plugin = (editor, options) => {
+
+    // need to assign the vars to window inside script, what are the props of script?, how do I get options to script
+    console.log(options.ethereum)
 
     // Drag & Drop Spec
     const block = {
@@ -110,6 +113,7 @@ const Plugin = (editor) => {
         model: {
             defaults: {
                 script,
+                ethereum: options.ethereum, 
                 method: 'mint',
                 contractAddress: '0xC20Aa5e1e51d36e21fC91D953eed2e46681412C3',
                 abi: `[
@@ -604,7 +608,7 @@ const Plugin = (editor) => {
                         name: 'method'
                     }
                 ],
-                'script-props': ['contractAddress', 'abi', 'method']
+                'script-props': ['contractAddress', 'abi', 'method', 'ethereum']
             }
         }
     };
@@ -615,8 +619,9 @@ const Plugin = (editor) => {
 
         const address = props.contractAddress;
         const abi = JSON.parse(props.abi);
+        console.log(props.ethereum)
 
-        console.log($('#sc-ui-modal'));
+        // console.log($('#sc-ui-modal'));
 
         
         function renderInputs (item) {
@@ -647,17 +652,16 @@ const Plugin = (editor) => {
                     </form>
                 </div>
             `)
-            console.log(item)
             col.append( $newdiv1 );
         });
         // window object works here
-        console.log(window)
+        console.log(window.hello)
         // console.log(new ethers.providers.Web3Provider(window.ethereum, "any"));
         console.log(window.ethereum)
         // console.log()
 
         // with or without window. doesn't matter, same error
-        window.handleButtonClick = async function (e) {
+        window.handleButtonClick = function (e) {
             e.preventDefault();
             // const { name } = e.target.id;
             console.log("Wtf");
@@ -668,7 +672,7 @@ const Plugin = (editor) => {
             
             const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
             console.log(provider);
-            let accounts = await provider.send("eth_requestAccounts", []);
+            let accounts = provider.send("eth_requestAccounts", []);
             console.log(accounts);
             let account = accounts[0];
             const signer = provider.getSigner(account);
@@ -685,7 +689,7 @@ const Plugin = (editor) => {
             console.log("0-----");
             const targetFn = contract[e.target.id];
             console.log(targetFn);
-            const res = await targetFn(...args);
+            const res = targetFn(...args);
             console.log(res);
             // const inputs = form.filter(':input');
             // console.log(inputs.val());
