@@ -23,3 +23,8 @@ npm run start
 ```
 npm run build
 ```
+
+now check inside `./dist` for two files
+
+- smartcontract-ui-plugin.min.js
+- smartcontract-ui-plugin.min.js.map
