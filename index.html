@@ -52,7 +52,26 @@
 
     <script type="text/javascript">
         const escapeName = (name) => `${name}`.trim().replace(/([^a-z0-9\w-:/]+)/gi, '-');
+        console.log(window.ethereum)
+        console.log(ethereum)
+        // TypeError: Converting circular structure to JSON when adding { ethereum: window.ethereum } as option for smartcontract plugin
+        /* I tried different stuff
+        works => pluginsOpts: {
+                'smartcontract-ui-plugin':  ethereum 
+            }
         
+            pluginsOpts: {
+                'smartcontract-ui-plugin':  {ethereum}
+            }
+
+            pluginsOpts: {
+                'smartcontract-ui-plugin':  {'ethereum': ethereum}
+            }
+            pluginsOpts: {
+                'smartcontract-ui-plugin':  {'ethereum': window.ethereum}
+            }
+
+        */
         window.editor = grapesjs.init({
             height: '100%',
             container: '#gjs',
@@ -63,7 +82,7 @@
             selectorManager: { escapeName },
             plugins: ['smartcontract-ui-plugin'],
             pluginsOpts: {
-                'smartcontract-ui-plugin': { ethereum: window.ethereum }
+                // 'smartcontract-ui-plugin':  {ethereum} 
             },
             canvas: {
               scripts: [

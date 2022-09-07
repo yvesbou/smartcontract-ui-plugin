@@ -66,8 +66,11 @@
 const Plugin = (editor, options) => {
 
     // need to assign the vars to window inside script, what are the props of script?, how do I get options to script
+    // console.log(options.ethereum)
+    console.log("here")
+    console.log(window.ethereum) // works
     console.log(options.ethereum)
-
+    console.log("here")
     // Drag & Drop Spec
     const block = {
         id: 'section-smart-contract-ui',
@@ -113,7 +116,7 @@ const Plugin = (editor, options) => {
         model: {
             defaults: {
                 script,
-                ethereum: options.ethereum, 
+                ethereum, 
                 method: 'mint',
                 contractAddress: '0xC20Aa5e1e51d36e21fC91D953eed2e46681412C3',
                 abi: `[
@@ -615,8 +618,14 @@ const Plugin = (editor, options) => {
 
     // Behavior
     function script (props) {
+        console.log("props inside script")
+        console.log(props.ethereum) // need to add argument for script inside props, but TypeError: Converting circular structure to JSON
+        console.log(window.ethereum) // not accessible through window.ethereum
+        console.log(ethereum)
+        console.log("props inside script")
         if (!props.contractAddress || !props.abi) return;
-
+        console.log("here")
+        console.log(props)
         const address = props.contractAddress;
         const abi = JSON.parse(props.abi);
         console.log(props.ethereum)
@@ -654,9 +663,10 @@ const Plugin = (editor, options) => {
             `)
             col.append( $newdiv1 );
         });
-        // window object works here
-        console.log(window.hello)
-        // console.log(new ethers.providers.Web3Provider(window.ethereum, "any"));
+
+        // defined
+        console.log(window)
+        // window.ethereum is undefined - it does not work with this type of import, in build3r it worked because of es6 modules
         console.log(window.ethereum)
         // console.log()
 
