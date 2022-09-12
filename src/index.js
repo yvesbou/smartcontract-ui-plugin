@@ -116,7 +116,7 @@ const Plugin = (editor, options) => {
         model: {
             defaults: {
                 script,
-                ethereum, 
+                ethereumContext: ethereum,
                 method: 'mint',
                 contractAddress: '0xC20Aa5e1e51d36e21fC91D953eed2e46681412C3',
                 abi: `[
@@ -611,7 +611,7 @@ const Plugin = (editor, options) => {
                         name: 'method'
                     }
                 ],
-                'script-props': ['contractAddress', 'abi', 'method', 'ethereum']
+                'script-props': ['contractAddress', 'abi', 'method', 'ethereumContext']
             }
         }
     };
